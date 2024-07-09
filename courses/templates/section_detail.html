@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ section.title }}</title>
+</head>
+<body>
+    <h1>{{ section.title }}</h1>
+    <h2>Audio Files</h2>
+    <ul>
+        {% for audio in audio_files %}
+            <li>{{ audio.file_path }} ({{ audio.duration }})</li>
+        {% endfor %}
+    </ul>
+    <h2>Videos</h2>
+    <ul>
+        {% for video in videos %}
+            <li>{{ video.file_path }} ({{ video.duration }})</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'notebook_detail' section.notebook.id %}">Back to Notebook</a>
+</body>
+</html>

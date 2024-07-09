@@ -1,0 +1,27 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.navbar {
+    z-index: 1;
+    background-color: transparent !important;
+}
+
+.container {
+    z-index: 1; /* Ensure login container is above the video */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.login-container, .signup-container {
+    max-width: 400px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+    padding: 20px;
+    border-radius: 10px;
+}
