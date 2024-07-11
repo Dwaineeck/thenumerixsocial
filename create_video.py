@@ -4,7 +4,6 @@ import textwrap
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-import simpleaudio as sa  # Use simpleaudio for playing sound
 from moviepy.editor import (AudioFileClip, ColorClip, CompositeVideoClip,
                             ImageClip, TextClip, VideoFileClip)
 
@@ -81,23 +80,6 @@ def create_video_parallel(section, audio_file, output_file, logo_path, backgroun
         print(f'Error creating video for {output_file}: {str(e)}')
         raise e  # Rethrow the exception to see the full traceback
 
-
-def play_completion_sound(sound_path):
-    """
-    Plays a completion sound after video creation.
-
-    Args:
-    sound_path (str): Path to the sound file to be played.
-    """
-    try:
-        wave_obj = sa.WaveObject.from_wave_file(sound_path)
-        play_obj = wave_obj.play()
-        play_obj.wait_done()
-        print(f'Sound played: {sound_path}')
-    except Exception as e:
-        print(f'Error playing sound: {str(e)}')
-
-
 if __name__ == "__main__":
     start_time = time.time()
 
@@ -153,5 +135,3 @@ if __name__ == "__main__":
     duration = end_time - start_time
     print(f'Total time taken: {duration:.2f} seconds')
 
-    # Play notification sound
-    play_completion_sound(sound_file_path)
