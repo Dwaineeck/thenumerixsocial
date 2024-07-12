@@ -310,8 +310,8 @@ sshtunnel==0.4.0
 # statsmodels==0.13.0
 strsim==0.0.3
 streamlit==1.11.0
-sympy==1.11
-tabulate==0.8.12
+# sympy==1.11
+# tabulate==0.8.12
 tenacity==8.1.2
 terminado==0.12.3
 testpath==0.5.0
