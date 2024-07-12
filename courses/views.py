@@ -3,7 +3,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import SignUpForm
+from .forms import LoginForm, SignUpForm
 from .models import AudioFile, Notebook, Section, Video
 
 
@@ -35,6 +35,20 @@ def login_view(request):
                 return redirect('home')  # Replace 'home' with your desired URL after login
     else:
         form = AuthenticationForm()
+    return render(request, 'login.html', {'form': form})
+
+def user_login(request):
+    if request.method == 'POST':
+        form = LoginForm(data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('home')
+    else:
+        form = LoginForm()
     return render(request, 'login.html', {'form': form})
 
 def logout_view(request):
