@@ -304,7 +304,7 @@ snowballstemmer==2.1.0
 sortedcontainers==2.4.0
 soundfile==0.11.0
 soupsieve==2.3.1
-spacy==4.3.4
+spacy==3.7.5
 srsly==2.5.2
 sshtunnel==0.4.0
 statsmodels==0.13.0
