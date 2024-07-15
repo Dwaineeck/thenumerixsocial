@@ -13,6 +13,8 @@ urlpatterns = [
     path('', boaapp_views.home, name='home'),
     path('upload/', boaapp_views.upload_document, name='upload_document'),
     path('upload/success/', boaapp_views.upload_success, name='upload_success'),
+    path('starburst-data/', boaapp_views.starburst_data_view, name='starburst_data'),
+
 ]
 
 # Serve media files in development

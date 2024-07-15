@@ -15,6 +15,7 @@ from .forms import DocumentForm, UserRegisterForm
 from .models import AudioFile, Document
 from .process_notebook import (handle_uploaded_file, process_notebook,
                                process_notebook_and_create_audio)
+from .starburst_connection import execute_query
 
 progress_data = {}
 
@@ -51,6 +52,16 @@ def login_view(request):
             messages.error(request, 'Invalid username or password')
     return render(request, 'boaapp/login.html')
 
+def starburst_data_view(request):
+    query = "SELECT * FROM your_schema.your_table LIMIT 10"
+
+    data = execute_query(query)
+    
+    context = {
+        'data': data
+    }
+    return render(request, 'boaapp/starburst_data.html', context)
+
 def logout_view(request):
     logout(request)
     return redirect('login')
@@ -67,13 +78,21 @@ def handle_audio_creation(file_path, file_name):
                 audio_file_path = os.path.join('audio', title + '.mp3')
                 with open(audio_file_path, 'w') as f:
                     f.write(audio_file['content'])
+                
+                # Save to PostgreSQL AudioFile model
+                audio_model = AudioFile.objects.create(
+                    title=title,
+                    file=audio_file_path,
+                    metadata=audio_file.get('metadata', {})  # Save metadata if available
+                )
+                
                 progress_data[file_name] = {'progress': int((idx + 1) / total_files * 100)}
-                print(f"Audio content written to {audio_file_path}")
+                print(f"Audio content written to {audio_file_path}, saved to database.")
         else:
             print(f"Unexpected data type found in audio_files: {type(audio_file)}")
     
     progress_data[file_name] = {'progress': 100, 'completed': True}
-    print("Sections and audio files created.")
+    print("Sections and audio files created and saved to database.")
 
 @login_required
 def upload_document(request):

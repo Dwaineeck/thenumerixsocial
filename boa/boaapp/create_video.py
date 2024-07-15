@@ -7,7 +7,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from moviepy.editor import (AudioFileClip, ColorClip, CompositeVideoClip,
                             ImageClip, TextClip, VideoFileClip)
 
-from thenumerixsocial.learnerix.process_notebook import extract_content
+from .process_notebook import process_notebook
 
 
 def create_video_parallel(section, audio_file, output_file, logo_path, background_path, text_sync_file):
