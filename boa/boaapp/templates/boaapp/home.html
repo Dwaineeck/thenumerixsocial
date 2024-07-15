@@ -1,0 +1,71 @@
+{% extends 'boaapp/base_generic.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <!-- Include jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Include your custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Include your custom JavaScript -->
+    <script src="{% static 'js/index.js' %}"></script>
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon" />
+</head>
+<body>
+{% block content %}
+<div class="container">
+    <ul class="list-group">
+        {% for file in uploaded_files %}
+        <li class="list-group-item form">
+            {{ file.name }}
+            <button type="submit" class="btn"><a href="{% url 'upload_document' %}">Upload Files</a></button>
+        </li>
+        {% empty %}
+        <li class="list-group-item">No files uploaded.</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="container custom-container">
+    <h2 class="text-center mt-5">What Does the Upload Files Button Do?</h2>
+    <span class="d-block text-center mb-4">
+        When you click the "Upload Files" button, it triggers a function in the backend of this application, typically written in Python using Django framework. Here’s how it pertains to my Python knowledge:
+    </span>
+    <ul class="list-group mx-auto" style="max-width: 500px;">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>✅ Python Backend</span>
+            <span class="badge badge-success badge-pill">Details</span>
+            <span class="details">The button is linked to a Python function defined in a Django view (likely `upload_document` view in your case).</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>✅ File Handling</span>
+            <span class="badge badge-success badge-pill">Details</span>
+            <span class="details">Python scripts handle file uploads and manage them within the application’s file system.</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>✅ Integration</span>
+            <span class="badge badge-success badge-pill">Details</span>
+            <span class="details">Python interacts with the front-end (HTML/CSS) to provide dynamic content and handle user interactions.</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>✅ Functionality</span>
+            <span class="badge badge-success badge-pill">Details</span>
+            <span class="details">This button allows users to upload files, which are then processed or stored based on backend logic written in Python.</span>
+        </li>
+    </ul>
+</div>
+{% endblock %}
+</body>
+</html>

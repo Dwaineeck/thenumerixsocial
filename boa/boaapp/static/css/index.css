@@ -1,0 +1,83 @@
+/* Global styles */
+* {
+    /* border: dotted rgb(0, 255, 30) 0.5px !important; */
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background: linear-gradient(
+        to right,
+        #e73276,
+        #e84177,
+        #ea4b78,
+        #eb5679,
+        #ed617a,
+        #ee6b7c,
+        #f0777d,
+        #f2827f,
+        #f38d80,
+        #f59881,
+        #f7a382,
+        #f8ad84,
+        #feb191,
+        #d98ab0,
+        #b364c0,
+        #a75fba,
+        #9a5ab4,
+        #8d55ae,
+        #8050a8,
+        #734ba2,
+        #67469c,
+        #5a4196,
+        #4d3c90,
+        #40378a,
+        #1d183c
+    );
+    color: #000000;
+    min-height: 100vh;
+}
+
+/* Button styles */
+.btn {
+    background-color: transparent !important;
+    color: #ffffff;
+}
+
+/* Navbar styles */
+.navbar {
+    z-index: 1;
+    background-color: transparent !important;
+}
+
+/* Container styles */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Custom Container */
+.custom-container {
+    text-align: center;
+    display: grid;
+    align-content: center;
+}
+
+.form {
+    background-color: transparent !important;
+}
+
+.form-control {
+    border: none;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    align-content: center;
+}
+
+.details {
+    display: none;
+}
